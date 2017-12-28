@@ -1,0 +1,452 @@
+paths:
+  /products:
+    post:
+      tags:
+        - product
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: product.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/product'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/product'
+      deprecated: false
+    put:
+      tags:
+        - product
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
+      operationId: product.upsert__put_products
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/product'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/product'
+      deprecated: false
+    patch:
+      tags:
+        - product
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
+      operationId: product.upsert__patch_products
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/product'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/product'
+      deprecated: false
+    get:
+      tags:
+        - product
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: product.find
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/product'
+      deprecated: false
+  /products/replaceOrCreate:
+    post:
+      tags:
+        - product
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: product.replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/product'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/product'
+      deprecated: false
+  /products/upsertWithWhere:
+    post:
+      tags:
+        - product
+      summary: >-
+        Update an existing model instance or insert a new one into the data
+        source based on the where criteria.
+      operationId: product.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/product'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/product'
+      deprecated: false
+  '/products/{id}/exists':
+    get:
+      tags:
+        - product
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'product.exists__get_products_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/products/{id}':
+    head:
+      tags:
+        - product
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'product.exists__head_products_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - product
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: product.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields and include - must be a JSON-encoded string
+            ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/product'
+      deprecated: false
+    delete:
+      tags:
+        - product
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: product.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - product
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
+      operationId: 'product.prototype.updateAttributes__put_products_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/product'
+        - name: id
+          in: path
+          description: product id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/product'
+      deprecated: false
+    patch:
+      tags:
+        - product
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
+      operationId: 'product.prototype.updateAttributes__patch_products_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/product'
+        - name: id
+          in: path
+          description: product id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/product'
+      deprecated: false
+  '/products/{id}/replace':
+    post:
+      tags:
+        - product
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: product.replaceById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/product'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/product'
+      deprecated: false
+  /products/findOne:
+    get:
+      tags:
+        - product
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: product.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/product'
+      deprecated: false
+  /products/update:
+    post:
+      tags:
+        - product
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: product.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/product'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /products/count:
+    get:
+      tags:
+        - product
+      summary: Count instances of the model matched by where from the data source.
+      operationId: product.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+definitions:
+  product:
+    properties:
+      name:
+        type: string
+      id:
+        type: number
+        format: double
+      description:
+        type: string
+      price:
+        default: 0
+        type: number
+        format: double
+    required:
+      - name
+    additionalProperties: false
+  x-any:
+    properties: {}
+basePath: /api
+swagger: '2.0'
+info:
+  x-ibm-name: shoppinglb
+  version: 1.0.0
+  title: shoppingLB
+schemes:
+  - https
+host: $(catalog.host)
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  clientIdHeader:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+  clientSecretHeader:
+    in: header
+    name: X-IBM-Client-Secret
+    type: apiKey
+security:
+  - {}
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  catalogs:
+    apic-dev:
+      properties:
+        runtime-url: $(TARGET_URL)
+    sb:
+      properties:
+        runtime-url: >-
+          https://apiconnect-b08f305d-0c71-415e-bec9-e7719a5bd8fb.laraziosinlibmcom-vu2018.apic.eu-gb.mybluemix.net
+        invoke-tls-profile: 'client:Loopback-client'
+  assembly:
+    execute:
+      - invoke:
+          target-url: $(runtime-url)$(request.path)$(request.search)
+          tls-profile: $(invoke-tls-profile)
+  properties:
+    runtime-url:
+      value: ''
+      description: ''
+      encoded: false
+    invoke-tls-profile:
+      value: ''
+      description: ''
+      encoded: false

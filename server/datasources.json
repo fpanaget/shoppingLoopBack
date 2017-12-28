@@ -1,0 +1,8 @@
+{
+  "shoppingDS": {
+    "name": "shoppingDS",
+    "localStorage": "shoppingKey",
+    "file": "",
+    "connector": "memory"
+  }
+}
