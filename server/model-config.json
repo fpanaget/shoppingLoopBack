@@ -14,7 +14,7 @@
     ]
   },
   "product": {
-    "dataSource": "shoppingDS",
+    "dataSource": "product_cloudantVU2018DS",
     "public": true
   }
 }
