@@ -4,5 +4,13 @@
     "localStorage": "shoppingKey",
     "file": "",
     "connector": "memory"
+  },
+  "product_cloudantVU2018DS": {
+    "url": "https://5415a8bb-7739-44f7-9b9c-7bb1b819ca69-bluemix:d94a155c4272b3126500cc4718608b07247667637cccf5f585d06c1784809b52@5415a8bb-7739-44f7-9b9c-7bb1b819ca69-bluemix.cloudant.com",
+    "database": "product",
+    "username": "5415a8bb-7739-44f7-9b9c-7bb1b819ca69-bluemix",
+    "password": "d94a155c4272b3126500cc4718608b07247667637cccf5f585d06c1784809b52",
+    "name": "product_cloudantVU2018DS",
+    "connector": "cloudant"
   }
 }
