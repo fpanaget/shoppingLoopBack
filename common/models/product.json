@@ -23,6 +23,7 @@
     },
     "price": {
       "type": "number",
+      "required": false,
       "default": 0
     }
   },

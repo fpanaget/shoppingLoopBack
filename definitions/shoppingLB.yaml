@@ -22,7 +22,9 @@ paths:
     put:
       tags:
         - product
-      summary: Patch an existing model instance or insert a new one into the data source.
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
       operationId: product.upsert__put_products
       parameters:
         - name: data
@@ -41,7 +43,9 @@ paths:
     patch:
       tags:
         - product
-      summary: Patch an existing model instance or insert a new one into the data source.
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
       operationId: product.upsert__patch_products
       parameters:
         - name: data
@@ -65,7 +69,9 @@ paths:
       parameters:
         - name: filter
           in: query
-          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
           required: false
           type: string
           format: JSON
@@ -81,7 +87,9 @@ paths:
     post:
       tags:
         - product
-      summary: Replace an existing model instance or insert a new one into the data source.
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
       operationId: product.replaceOrCreate
       parameters:
         - name: data
@@ -101,7 +109,9 @@ paths:
     post:
       tags:
         - product
-      summary: Update an existing model instance or insert a new one into the data source based on the where criteria.
+      summary: >-
+        Update an existing model instance or insert a new one into the data
+        source based on the where criteria.
       operationId: product.upsertWithWhere
       parameters:
         - name: where
@@ -181,7 +191,9 @@ paths:
           format: JSON
         - name: filter
           in: query
-          description: 'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})'
+          description: >-
+            Filter defining fields and include - must be a JSON-encoded string
+            ({"something":"value"})
           required: false
           type: string
           format: JSON
@@ -212,7 +224,9 @@ paths:
     put:
       tags:
         - product
-      summary: Patch attributes for a model instance and persist it into the data source.
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
       operationId: 'product.prototype.updateAttributes__put_products_{id}'
       parameters:
         - name: data
@@ -237,7 +251,9 @@ paths:
     patch:
       tags:
         - product
-      summary: Patch attributes for a model instance and persist it into the data source.
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
       operationId: 'product.prototype.updateAttributes__patch_products_{id}'
       parameters:
         - name: data
@@ -263,7 +279,9 @@ paths:
     post:
       tags:
         - product
-      summary: Replace attributes for a model instance and persist it into the data source.
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
       operationId: product.replaceById
       parameters:
         - name: id
@@ -294,7 +312,9 @@ paths:
       parameters:
         - name: filter
           in: query
-          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string ({"something":"value"})
           required: false
           type: string
           format: JSON
@@ -378,11 +398,11 @@ definitions:
     additionalProperties: false
   x-any:
     properties: {}
-basePath: /api
+basePath: /v2/api
 swagger: '2.0'
 info:
   x-ibm-name: shoppinglb
-  version: 1.0.0
+  version: 2.0.0
   title: shoppingLB
 schemes:
   - https
@@ -413,7 +433,8 @@ x-ibm-configuration:
         runtime-url: $(TARGET_URL)
     sb:
       properties:
-        runtime-url: 'https://apiconnect-b08f305d-0c71-415e-bec9-e7719a5bd8fb.laraziosinlibmcom-vu2018.apic.eu-gb.mybluemix.net'
+        runtime-url: >-
+          https://apiconnect-b88bf090-2153-4347-b504-15df6f6e3050.laraziosinlibmcom-vu2018.apic.eu-gb.mybluemix.net
         invoke-tls-profile: 'client:Loopback-client'
   assembly:
     execute:
