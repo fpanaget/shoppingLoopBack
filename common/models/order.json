@@ -1,38 +1,25 @@
 {
-  "name": "product",
-  "plural": "products",
+  "name": "order",
   "base": "PersistedModel",
   "idInjection": false,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "description": {
-      "type": "string"
-    },
     "id": {
       "type": "string",
       "id": true,
       "generated": true,
       "required": false,
       "isArray": false
-    },
-    "name": {
-      "type": "string",
-      "required": true
-    },
-    "price": {
-      "type": "number",
-      "required": false,
-      "default": 0
     }
   },
   "validations": [],
   "relations": {
-    "orders": {
+    "products": {
       "type": "hasAndBelongsToMany",
-      "model": "order",
-      "foreignKey": "orderId"
+      "model": "product",
+      "foreignKey": "productId"
     }
   },
   "acls": [],

@@ -17,5 +17,9 @@
     "dataSource": "product_cloudantVU2018DS",
     "public": true,
     "strict": false
+  },
+  "order": {
+    "dataSource": "order_cloudantVU2018DS",
+    "public": true
   }
 }
