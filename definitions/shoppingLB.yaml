@@ -1,4 +1,250 @@
 paths:
+  '/products/{id}/orders/{fk}':
+    get:
+      tags:
+        - product
+      summary: Find a related item by id for orders.
+      operationId: product.prototype.__findById__orders
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for orders
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: product id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/order'
+      deprecated: false
+    delete:
+      tags:
+        - product
+      summary: Delete a related item by id for orders.
+      operationId: product.prototype.__destroyById__orders
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for orders
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: product id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - product
+      summary: Update a related item by id for orders.
+      operationId: product.prototype.__updateById__orders
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for orders
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/order'
+        - name: id
+          in: path
+          description: product id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/order'
+      deprecated: false
+  '/products/{id}/orders/rel/{fk}':
+    put:
+      tags:
+        - product
+      summary: Add a related item by id for orders.
+      operationId: product.prototype.__link__orders
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for orders
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/orderproduct'
+        - name: id
+          in: path
+          description: product id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/orderproduct'
+      deprecated: false
+    delete:
+      tags:
+        - product
+      summary: Remove the orders relation to an item by id.
+      operationId: product.prototype.__unlink__orders
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for orders
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: product id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    head:
+      tags:
+        - product
+      summary: Check the existence of orders relation to an item by id.
+      operationId: product.prototype.__exists__orders
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for orders
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: product id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: boolean
+      deprecated: false
+  '/products/{id}/orders':
+    get:
+      tags:
+        - product
+      summary: Queries orders of product.
+      operationId: product.prototype.__get__orders
+      parameters:
+        - name: filter
+          in: query
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: product id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/order'
+      deprecated: false
+    post:
+      tags:
+        - product
+      summary: Creates a new instance in orders of this model.
+      operationId: product.prototype.__create__orders
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/order'
+        - name: id
+          in: path
+          description: product id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/order'
+      deprecated: false
+    delete:
+      tags:
+        - product
+      summary: Deletes all orders of this model.
+      operationId: product.prototype.__delete__orders
+      parameters:
+        - name: id
+          in: path
+          description: product id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/products/{id}/orders/count':
+    get:
+      tags:
+        - product
+      summary: Counts orders of product.
+      operationId: product.prototype.__count__orders
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: product id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
   /products:
     post:
       tags:
@@ -22,9 +268,7 @@ paths:
     put:
       tags:
         - product
-      summary: >-
-        Patch an existing model instance or insert a new one into the data
-        source.
+      summary: Patch an existing model instance or insert a new one into the data source.
       operationId: product.upsert__put_products
       parameters:
         - name: data
@@ -43,9 +287,7 @@ paths:
     patch:
       tags:
         - product
-      summary: >-
-        Patch an existing model instance or insert a new one into the data
-        source.
+      summary: Patch an existing model instance or insert a new one into the data source.
       operationId: product.upsert__patch_products
       parameters:
         - name: data
@@ -69,9 +311,7 @@ paths:
       parameters:
         - name: filter
           in: query
-          description: >-
-            Filter defining fields, where, include, order, offset, and limit -
-            must be a JSON-encoded string ({"something":"value"})
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
           required: false
           type: string
           format: JSON
@@ -87,9 +327,7 @@ paths:
     post:
       tags:
         - product
-      summary: >-
-        Replace an existing model instance or insert a new one into the data
-        source.
+      summary: Replace an existing model instance or insert a new one into the data source.
       operationId: product.replaceOrCreate
       parameters:
         - name: data
@@ -109,9 +347,7 @@ paths:
     post:
       tags:
         - product
-      summary: >-
-        Update an existing model instance or insert a new one into the data
-        source based on the where criteria.
+      summary: Update an existing model instance or insert a new one into the data source based on the where criteria.
       operationId: product.upsertWithWhere
       parameters:
         - name: where
@@ -191,9 +427,7 @@ paths:
           format: JSON
         - name: filter
           in: query
-          description: >-
-            Filter defining fields and include - must be a JSON-encoded string
-            ({"something":"value"})
+          description: 'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})'
           required: false
           type: string
           format: JSON
@@ -224,9 +458,7 @@ paths:
     put:
       tags:
         - product
-      summary: >-
-        Patch attributes for a model instance and persist it into the data
-        source.
+      summary: Patch attributes for a model instance and persist it into the data source.
       operationId: 'product.prototype.updateAttributes__put_products_{id}'
       parameters:
         - name: data
@@ -251,9 +483,7 @@ paths:
     patch:
       tags:
         - product
-      summary: >-
-        Patch attributes for a model instance and persist it into the data
-        source.
+      summary: Patch attributes for a model instance and persist it into the data source.
       operationId: 'product.prototype.updateAttributes__patch_products_{id}'
       parameters:
         - name: data
@@ -279,9 +509,7 @@ paths:
     post:
       tags:
         - product
-      summary: >-
-        Replace attributes for a model instance and persist it into the data
-        source.
+      summary: Replace attributes for a model instance and persist it into the data source.
       operationId: product.replaceById
       parameters:
         - name: id
@@ -312,9 +540,7 @@ paths:
       parameters:
         - name: filter
           in: query
-          description: >-
-            Filter defining fields, where, include, order, offset, and limit -
-            must be a JSON-encoded string ({"something":"value"})
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
           required: false
           type: string
           format: JSON
@@ -379,7 +605,629 @@ paths:
                 type: number
                 format: double
       deprecated: false
+  '/orders/{id}/products/{fk}':
+    get:
+      tags:
+        - order
+      summary: Find a related item by id for products.
+      operationId: order.prototype.__findById__products
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for products
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: order id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/product'
+      deprecated: false
+    delete:
+      tags:
+        - order
+      summary: Delete a related item by id for products.
+      operationId: order.prototype.__destroyById__products
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for products
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: order id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - order
+      summary: Update a related item by id for products.
+      operationId: order.prototype.__updateById__products
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for products
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/product'
+        - name: id
+          in: path
+          description: order id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/product'
+      deprecated: false
+  '/orders/{id}/products/rel/{fk}':
+    put:
+      tags:
+        - order
+      summary: Add a related item by id for products.
+      operationId: order.prototype.__link__products
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for products
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/orderproduct'
+        - name: id
+          in: path
+          description: order id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/orderproduct'
+      deprecated: false
+    delete:
+      tags:
+        - order
+      summary: Remove the products relation to an item by id.
+      operationId: order.prototype.__unlink__products
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for products
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: order id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    head:
+      tags:
+        - order
+      summary: Check the existence of products relation to an item by id.
+      operationId: order.prototype.__exists__products
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for products
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: order id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: boolean
+      deprecated: false
+  '/orders/{id}/products':
+    get:
+      tags:
+        - order
+      summary: Queries products of order.
+      operationId: order.prototype.__get__products
+      parameters:
+        - name: filter
+          in: query
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: order id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/product'
+      deprecated: false
+    post:
+      tags:
+        - order
+      summary: Creates a new instance in products of this model.
+      operationId: order.prototype.__create__products
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/product'
+        - name: id
+          in: path
+          description: order id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/product'
+      deprecated: false
+    delete:
+      tags:
+        - order
+      summary: Deletes all products of this model.
+      operationId: order.prototype.__delete__products
+      parameters:
+        - name: id
+          in: path
+          description: order id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/orders/{id}/products/count':
+    get:
+      tags:
+        - order
+      summary: Counts products of order.
+      operationId: order.prototype.__count__products
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: order id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /orders:
+    post:
+      tags:
+        - order
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: order.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/order'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/order'
+      deprecated: false
+    put:
+      tags:
+        - order
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: order.upsert__put_orders
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/order'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/order'
+      deprecated: false
+    patch:
+      tags:
+        - order
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: order.upsert__patch_orders
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/order'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/order'
+      deprecated: false
+    get:
+      tags:
+        - order
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: order.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/order'
+      deprecated: false
+  /orders/replaceOrCreate:
+    post:
+      tags:
+        - order
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: order.replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/order'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/order'
+      deprecated: false
+  /orders/upsertWithWhere:
+    post:
+      tags:
+        - order
+      summary: Update an existing model instance or insert a new one into the data source based on the where criteria.
+      operationId: order.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/order'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/order'
+      deprecated: false
+  '/orders/{id}/exists':
+    get:
+      tags:
+        - order
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'order.exists__get_orders_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/orders/{id}':
+    head:
+      tags:
+        - order
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'order.exists__head_orders_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - order
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: order.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: 'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/order'
+      deprecated: false
+    delete:
+      tags:
+        - order
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: order.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - order
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: 'order.prototype.updateAttributes__put_orders_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/order'
+        - name: id
+          in: path
+          description: order id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/order'
+      deprecated: false
+    patch:
+      tags:
+        - order
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: 'order.prototype.updateAttributes__patch_orders_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/order'
+        - name: id
+          in: path
+          description: order id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/order'
+      deprecated: false
+  '/orders/{id}/replace':
+    post:
+      tags:
+        - order
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: order.replaceById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/order'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/order'
+      deprecated: false
+  /orders/findOne:
+    get:
+      tags:
+        - order
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: order.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/order'
+      deprecated: false
+  /orders/update:
+    post:
+      tags:
+        - order
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: order.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/order'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /orders/count:
+    get:
+      tags:
+        - order
+      summary: Count instances of the model matched by where from the data source.
+      operationId: order.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
 definitions:
+  x-any:
+    properties: {}
+  order:
+    properties:
+      id:
+        type: string
+    additionalProperties: false
+  orderproduct:
+    properties:
+      id:
+        type: string
+      orderId:
+        type: string
+      productId:
+        type: string
+    additionalProperties: false
   product:
     properties:
       description:
@@ -393,11 +1241,8 @@ definitions:
         type: number
         format: double
     required:
-      - id
       - name
     additionalProperties: false
-  x-any:
-    properties: {}
 basePath: /v2/api
 swagger: '2.0'
 info:
@@ -433,8 +1278,7 @@ x-ibm-configuration:
         runtime-url: $(TARGET_URL)
     sb:
       properties:
-        runtime-url: >-
-          https://apiconnect-b88bf090-2153-4347-b504-15df6f6e3050.laraziosinlibmcom-vu2018.apic.eu-gb.mybluemix.net
+        runtime-url: 'https://apiconnect-b88bf090-2153-4347-b504-15df6f6e3050.laraziosinlibmcom-vu2018.apic.eu-gb.mybluemix.net'
         invoke-tls-profile: 'client:Loopback-client'
   assembly:
     execute:
