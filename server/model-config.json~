@@ -25,21 +25,5 @@
   "customer": {
     "dataSource": "customer_cloudantVU2018DS",
     "public": true
-  },
-  "AccessToken": {
-    "dataSource": "accesstoken_cloudantVU2018DS",
-    "public": false
-  },
-  "ACL": {
-    "dataSource": "acl_cloudantVU2018DS",
-    "public": false
-  },
-  "Role": {
-    "dataSource": "role_cloudantVU2018DS",
-    "public": false
-  },
-  "RoleMapping": {
-    "dataSource": "rolemapping_cloudantVU2018DS",
-    "public": false
   }
 }
