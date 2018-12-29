@@ -401,9 +401,9 @@ definitions:
 basePath: /api
 swagger: '2.0'
 info:
-  x-ibm-name: shoppinglb
+  x-ibm-name: shoppingloopBack
   version: 1.0.0
-  title: shoppingLB
+  title: shoppingLoopBack
 schemes:
   - https
 host: $(catalog.host)
