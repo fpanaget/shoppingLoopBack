@@ -14,32 +14,32 @@
     ]
   },
   "product": {
-    "dataSource": "product_cloudantVU2018DS",
+    "dataSource": "product_cloudantVUDS",
     "public": true,
     "strict": false
   },
   "order": {
-    "dataSource": "order_cloudantVU2018DS",
+    "dataSource": "order_cloudantVUDS",
     "public": true
   },
   "customer": {
-    "dataSource": "customer_cloudantVU2018DS",
+    "dataSource": "customer_cloudantVUDS",
     "public": true
   },
   "AccessToken": {
-    "dataSource": "accesstoken_cloudantVU2018DS",
+    "dataSource": "accesstoken_cloudantVUDS",
     "public": false
   },
   "ACL": {
-    "dataSource": "acl_cloudantVU2018DS",
+    "dataSource": "acl_cloudantVUDS",
     "public": false
   },
   "Role": {
-    "dataSource": "role_cloudantVU2018DS",
+    "dataSource": "role_cloudantVUDS",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "rolemapping_cloudantVU2018DS",
+    "dataSource": "rolemapping_cloudantVUDS",
     "public": false
   }
 }

@@ -1,0 +1,10 @@
+applications:
+- path: .
+  memory: 256M
+  instances: 1
+  routes: 
+   - route: shoppingloopback3.eu-de.mybluemix.net
+  name: shoppingLoopback3 
+  buildpack: sdk-for-nodejs
+services:
+ - Cloduant-vu

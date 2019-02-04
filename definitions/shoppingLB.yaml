@@ -1975,7 +1975,7 @@ basePath: /v2/api
 swagger: '2.0'
 info:
   x-ibm-name: shoppinglb
-  version: 2.0.0
+  version: 3.0.0
   title: shoppingLB
 schemes:
   - https
@@ -1994,7 +1994,8 @@ securityDefinitions:
     name: X-IBM-Client-Secret
     type: apiKey
 security:
-  - {}
+  - clientIdHeader: []
+    clientSecretHeader: []
 x-ibm-configuration:
   testable: true
   enforced: true
@@ -2008,6 +2009,10 @@ x-ibm-configuration:
       properties:
         runtime-url: >-
           https://apiconnect-b88bf090-2153-4347-b504-15df6f6e3050.laraziosinlibmcom-vu2018.apic.eu-gb.mybluemix.net
+        invoke-tls-profile: 'client:Loopback-client'
+    vu:
+      properties:
+        runtime-url: 'https://shoppingloopback3.eu-de.mybluemix.net'
         invoke-tls-profile: 'client:Loopback-client'
   assembly:
     execute:
